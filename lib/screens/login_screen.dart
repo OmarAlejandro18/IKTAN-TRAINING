@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:iktan_training/ux/ux.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -235,6 +234,7 @@ Widget botonLogin(BuildContext context, TextEditingController email,
         onTap: () => {
           print('el valor de usu es: ' + email.text),
           print('el valor de passw es: ' + contrasena.text),
+          Navigator.pushNamed(context, 'user'),
           email.text = '',
           contrasena.text = ''
         },

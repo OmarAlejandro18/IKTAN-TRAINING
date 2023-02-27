@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iktan_training/ux/ux.dart';
 import 'package:iktan_training/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -15,34 +14,20 @@ class HomeScreen extends StatelessWidget {
             contenedorNeformismo(),
             containerLogo(),
             textosBienvenida(),
-            //btnGetStarted(context),
-            Container(
+            SizedBox(
               height: 800,
               child: Column(
-                children: [
-                  const SizedBox(
+                children: const[
+                  SizedBox(
                     height: 550,
-                  ),
-                  SnakeButton(
-                    onTap: () => {Navigator.pushNamed(context, 'login')},
-                    duration: const Duration(seconds: 2),
-                    snakeColor: Colors.white,
-                    borderColor: Colors.amber,
-                    borderWith: 6.0,
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        'Empecemos',
-                        style: TextStyle(fontSize: 15),
-                      ),
-                    ),
                   ),
                   MainShinyButtons()
                 ],
               ),
             )
           ],
-        ));
+        ),
+        );
   }
 }
 
@@ -101,14 +86,14 @@ Widget textosBienvenida() {
         ),
         Text(
           'BIENVENIDO',
-          style: TextStyle(fontSize: 48, color: Color(0xFFF8B333), shadows: [
+          style: TextStyle(fontSize: 48, letterSpacing: 5 , color: const Color(0xffeab308), shadows: [
             Shadow(
                 offset: const Offset(1, 1),
-                color: const Color(0xFFF8B333).withOpacity(0.80),
+                color: const Color(0xffeab308).withOpacity(0.80),
                 blurRadius: 2),
             Shadow(
                 offset: const Offset(1, 1),
-                color: const Color(0xFFF8B333).withOpacity(0.85),
+                color: const Color(0xffeab308).withOpacity(0.85),
                 blurRadius: 2)
           ]),
         ),
@@ -118,24 +103,5 @@ Widget textosBienvenida() {
         )
       ],
     ),
-  );
-}
-
-Widget btnGetStarted(BuildContext context) {
-  return Column(
-    children: [
-      const SizedBox(
-        height: 560,
-      ),
-      Center(
-          child: SizedBox(
-        width: 200,
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
-          onPressed: () => {Navigator.pushNamed(context, 'login')},
-          child: const Text('Comencemos'),
-        ),
-      ))
-    ],
   );
 }
