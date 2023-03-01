@@ -38,10 +38,10 @@ class AvatarUser extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(100)),
           width: 140,
-          child: const Image(
-            image: NetworkImage(
-                'https://cdn-icons-png.flaticon.com/512/6073/6073873.png'),
-          ),
+          height: 120,
+          child:  Image(
+            image: AssetImage('assets/acerca_de.png'),
+          )
         ),
       ),
       const SizedBox(

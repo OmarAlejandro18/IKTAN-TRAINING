@@ -1,101 +1,9 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
-
 import 'package:iktan_training/theme/app_theme.dart';
 
-class CursosClass extends StatefulWidget {
-  const CursosClass({super.key});
-
-  @override
-  State<CursosClass> createState() => _CursoClassState();
-}
-
-class _CursoClassState extends State<CursosClass> {
-  final _pageController = PageController(
-    viewportFraction: 0.3,
-  );
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Clases Curso'),
-      ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: PageView.builder(
-                controller: _pageController,
-                scrollDirection: Axis.vertical,
-                itemCount: 5,
-                itemBuilder: (context, index) => _builder(index),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  //Changes here only
-  _builder(int index) {
-    return AnimatedBuilder(
-      animation: _pageController,
-      builder: (context, child) {
-        //print('el valor de index es ${index}');
-        double value = 1.0;
-        //print('el valor de value es ${value}');
-
-        if (_pageController.position.haveDimensions) {
-          value = _pageController.page! - index;
-          //print('el valor de value en la primera condicion es ${value}');
-          if (value >= 0) {
-            //print('el valor de value en el segundo if es ${value}');
-            double _lowerLimit = 0;
-            double _upperLimit = math.pi / 2;
-
-            //print('el valor de _lowerLimit es ${_lowerLimit}');
-            //print('el valor de _upperLimit es ${_upperLimit}');
-
-            value = (_upperLimit - (value.abs() * (_upperLimit - _lowerLimit)))
-                .clamp(_lowerLimit, _upperLimit);
-
-            //print('el valor de value en la primera operacion es ${value}');
-            value = _upperLimit - value;
-            //print('el valor de value en la segunda operacion es ${value}');
-            value *= -1;
-            //print('el valor de value en la tercera operacion operacion es ${value}');
-          }
-        } else {
-          //Won't work properly in case initialPage in changed in PageController
-          if (index == 0) {
-            value = 0;
-          } else if (index == 1) {
-            value = -1;
-          }
-        }
-
-        return Transform(
-          transform: Matrix4.identity()
-            ..setEntry(3, 2, 0.001)
-            ..rotateX(value),
-          alignment: Alignment.center,
-          child: Card(
-            i: index,
-          ),
-        );
-      },
-      child: Card(
-        i: index,
-      ),
-    );
-  }
-}
-
-class Card extends StatelessWidget {
+class CardClass extends StatelessWidget {
   final int i;
-  const Card({super.key, required this.i});
+  const CardClass({super.key, required this.i});
 
   @override
   Widget build(BuildContext context) {
@@ -103,19 +11,79 @@ class Card extends StatelessWidget {
       onTap: () => print('hola mundo desde i: ${i}'),
       child: Container(
         margin: const EdgeInsets.only(top: 0, right: 16, bottom: 16, left: 16),
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-        decoration: const BoxDecoration(
-          color: AppTheme.primary,
-          borderRadius: BorderRadius.all(Radius.circular(25)),
+        //padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        decoration:  BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: const BorderRadius.all(Radius.circular(25)),
+          border: Border.all(
+        color: AppTheme.primary,
+        width: 5,
+      ),
+          
         ),
-        child: const Center(
-            child: Text(
-          'Card',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-          ),
-        )),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                
+              ),
+              width: 170,
+              height: double.infinity,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: const FadeInImage(
+                placeholder: AssetImage('assets/no-image.jpg'),
+                image: NetworkImage(
+                    'https://static.nationalgeographic.es/files/styles/image_3200/public/02_5.jpg?w=1190&h=924'),
+                fit: BoxFit.cover,
+              ),
+              ),
+              ),
+            Column(
+              children: [
+                const SizedBox(height: 3,),
+                Container(
+                  height: 100,
+                  width: 180,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Este es el titulo de la clase dedicada a la extraccion de numeros enteros como $i',
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 180,
+                  height: 90,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text('Inicio: 20 de enero a 2023',
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.black54
+                    ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
