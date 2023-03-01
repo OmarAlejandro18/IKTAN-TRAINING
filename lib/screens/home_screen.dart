@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iktan_training/theme/app_theme.dart';
 import 'package:iktan_training/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -7,27 +8,27 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Stack(
-          children: [
-            const Background(),
-            contenedorNeformismo(),
-            containerLogo(),
-            textosBienvenida(),
-            SizedBox(
-              height: 800,
-              child: Column(
-                children: const[
-                  SizedBox(
-                    height: 550,
-                  ),
-                  MainShinyButtons()
-                ],
-              ),
-            )
-          ],
-        ),
-        );
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          const Background(),
+          contenedorNeformismo(),
+          containerLogo(),
+          textosBienvenida(),
+          SizedBox(
+            height: 800,
+            child: Column(
+              children: const [
+                SizedBox(
+                  height: 550,
+                ),
+                MainShinyButtons()
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
 
@@ -86,16 +87,20 @@ Widget textosBienvenida() {
         ),
         Text(
           'BIENVENIDO',
-          style: TextStyle(fontSize: 48, letterSpacing: 5 , color: const Color(0xffeab308), shadows: [
-            Shadow(
-                offset: const Offset(1, 1),
-                color: const Color(0xffeab308).withOpacity(0.80),
-                blurRadius: 2),
-            Shadow(
-                offset: const Offset(1, 1),
-                color: const Color(0xffeab308).withOpacity(0.85),
-                blurRadius: 2)
-          ]),
+          style: TextStyle(
+              fontSize: 48,
+              letterSpacing: 5,
+              color: AppTheme.primary,
+              shadows: [
+                Shadow(
+                    offset: const Offset(1, 1),
+                    color: AppTheme.primary.withOpacity(0.80),
+                    blurRadius: 2),
+                Shadow(
+                    offset: const Offset(1, 1),
+                    color: AppTheme.primary.withOpacity(0.85),
+                    blurRadius: 2)
+              ]),
         ),
         const Text(
           'POR FAVOR INICIA SESIÓN PARA USAR LA APLICACIÓN',

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:iktan_training/theme/app_theme.dart';
 
 const List<Color> orangeGradients = [
-  Color.fromARGB(255, 248, 178, 51),
-  Color.fromARGB(255, 248, 178, 51),
-  Color.fromARGB(255, 248, 179, 51),
+  Color(0xFFF8B233),
+  Color(0xFFF8B233),
+  Color(0xFFF8B333),
 ];
 
 const List<Color> aquaGradients = [
-  Color.fromARGB(255, 248, 178, 51),
-  Color.fromARGB(255, 248, 179, 51),
+  Color(0xFFF8B233),
+  Color(0xFFF8B333),
 ];
 
 class Background extends StatelessWidget {
@@ -83,7 +84,8 @@ class CirclePink extends StatelessWidget {
     return Transform.translate(
       offset: const Offset(-80.0, 90.0),
       child: const Material(
-        color: Color.fromARGB(255, 248, 178, 51),
+        color: AppTheme.primary //Color(0xFFF8B233),
+        ,
         shape: CircleBorder(side: BorderSide(color: Colors.white, width: 15.0)),
         child: Padding(padding: EdgeInsets.all(120)),
       ),
@@ -99,7 +101,7 @@ class CircleYellow extends StatelessWidget {
     return Transform.translate(
       offset: const Offset(0.0, 210.0),
       child: const Material(
-        color: Color.fromARGB(255, 248, 178, 51),
+        color: AppTheme.primary,
         shape: CircleBorder(side: BorderSide(color: Colors.white, width: 15.0)),
         child: Padding(padding: EdgeInsets.all(140)),
       ),

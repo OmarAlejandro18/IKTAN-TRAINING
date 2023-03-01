@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class HeaderWidget extends StatelessWidget {
-  final height;
+  final double height;
 
-  const HeaderWidget({super.key, this.height});
+  const HeaderWidget({super.key, required this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +11,14 @@ class HeaderWidget extends StatelessWidget {
     return Stack(
       children: [
         ClipPath(
-          clipper: ShapeClipper([
-            Offset(width / 5, height),
-            Offset(width / 10 * 5, height - 60),
-            Offset(width / 5 * 4, height + 20),
-            Offset(width, height - 18)
-          ]),
+          clipper: ShapeClipper(
+            offsets: [
+              Offset(width / 5, height),
+              Offset(width / 10 * 5, height - 60),
+              Offset(width / 5 * 4, height + 20),
+              Offset(width, height - 18)
+            ],
+          ),
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -32,12 +34,14 @@ class HeaderWidget extends StatelessWidget {
           ),
         ),
         ClipPath(
-          clipper: ShapeClipper([
-            Offset(width / 3, height + 20),
-            Offset(width / 10 * 8, height - 60),
-            Offset(width / 5 * 4, height - 60),
-            Offset(width, height - 20)
-          ]),
+          clipper: ShapeClipper(
+            offsets: [
+              Offset(width / 3, height + 20),
+              Offset(width / 10 * 8, height - 60),
+              Offset(width / 5 * 4, height - 60),
+              Offset(width, height - 20)
+            ],
+          ),
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -53,12 +57,14 @@ class HeaderWidget extends StatelessWidget {
           ),
         ),
         ClipPath(
-          clipper: ShapeClipper([
-            Offset(width / 5, height),
-            Offset(width / 2, height - 40),
-            Offset(width / 5 * 4, height - 80),
-            Offset(width, height - 20)
-          ]),
+          clipper: ShapeClipper(
+            offsets: [
+              Offset(width / 5, height),
+              Offset(width / 2, height - 40),
+              Offset(width / 5 * 4, height - 80),
+              Offset(width, height - 20)
+            ],
+          ),
           child: Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -96,18 +102,18 @@ class HeaderWidget extends StatelessWidget {
 }
 
 class ShapeClipper extends CustomClipper<Path> {
-  List<Offset> _offsets = [];
+  List<Offset> offsets = [];
 
-  ShapeClipper(this._offsets);
+  ShapeClipper({required this.offsets});
   @override
   Path getClip(Size size) {
     var path = Path();
 
     path.lineTo(0.0, size.height - 20);
     path.quadraticBezierTo(
-        _offsets[0].dx, _offsets[0].dy, _offsets[1].dx, _offsets[1].dy);
+        offsets[0].dx, offsets[0].dy, offsets[1].dx, offsets[1].dy);
     path.quadraticBezierTo(
-        _offsets[2].dx, _offsets[2].dy, _offsets[3].dx, _offsets[3].dy);
+        offsets[2].dx, offsets[2].dy, offsets[3].dx, offsets[3].dy);
     path.lineTo(size.width, 0.0);
     path.close();
 

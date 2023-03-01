@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iktan_training/screens/screens.dart';
+import 'package:iktan_training/theme/app_theme.dart';
+import 'package:iktan_training/widgets/widgets.dart';
 
 void main() => runApp(const MyApp());
 
@@ -15,8 +17,11 @@ class MyApp extends StatelessWidget {
       routes: {
         'home': (_) => const HomeScreen(),
         'login': (_) => const LoginScreen(),
-        'user': (_) => UserScreen()
+        'user': (_) => const UserScreen(),
+        'cursos': (_) => const CursosScreen(),
+        'claseCurso': (_) => const CursosClass(),
       },
+      theme: AppTheme.lightTheme,
     );
   }
 }

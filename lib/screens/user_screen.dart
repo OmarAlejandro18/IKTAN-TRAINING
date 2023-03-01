@@ -5,12 +5,12 @@ import '../widgets/circle_widget.dart';
 enum _MenuValues { editPerf, editCont, ncias }
 
 class UserScreen extends StatelessWidget {
-  UserScreen({super.key});
+  const UserScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: [
+        children: const [
           LlamandoCirculo(),
           AvatarUser(),
           UserBottonMenu(),
@@ -21,38 +21,40 @@ class UserScreen extends StatelessWidget {
 }
 
 class AvatarUser extends StatelessWidget {
-  AvatarUser({super.key});
+  const AvatarUser({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      SizedBox(
+      const SizedBox(
         height: 160,
       ),
       Center(
         child: Container(
           decoration: BoxDecoration(
               border: Border.all(
-                  width: 5, color: Color.fromARGB(255, 255, 255, 255)),
+                width: 5,
+                color: const Color.fromARGB(255, 255, 255, 255),
+              ),
               borderRadius: BorderRadius.circular(100)),
           width: 140,
-          child: Image(
+          child: const Image(
             image: NetworkImage(
                 'https://cdn-icons-png.flaticon.com/512/6073/6073873.png'),
           ),
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 10,
       ),
-      Text(
+      const Text(
         'andres cruz',
         style: TextStyle(fontSize: 18),
       ),
-      SizedBox(
+      const SizedBox(
         height: 10,
       ),
-      Text(
+      const Text(
         'usuario852@gmail.com',
         style: TextStyle(color: Colors.black45),
       )
@@ -61,37 +63,41 @@ class AvatarUser extends StatelessWidget {
 }
 
 class UserBottonMenu extends StatelessWidget {
-  UserBottonMenu({super.key});
+  const UserBottonMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
         Row(
           children: [
-            SizedBox(
+            const SizedBox(
               width: 320,
             ),
             PopupMenuButton<_MenuValues>(
               itemBuilder: (BuildContext context) => [
-                PopupMenuItem(
+                const PopupMenuItem(
                   value: _MenuValues.editPerf,
                   child: Text('actualizar datos de perfil'),
                 ),
-                PopupMenuItem(
+                const PopupMenuItem(
                   value: _MenuValues.editCont,
                   child: Text('actualizar contraseña'),
                 ),
-                PopupMenuItem(
+                const PopupMenuItem(
                   value: _MenuValues.ncias,
                   child: Text('datos para ncias'),
                 ),
               ],
               elevation: 0,
               color: Colors.white,
+              icon: const Icon(
+                Icons.more_vert_outlined,
+                color: Colors.white,
+              ),
               iconSize: 40,
               onSelected: (value) {
                 switch (value) {
@@ -109,34 +115,53 @@ class UserBottonMenu extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 250,
         ),
-        MenuDashboard()
+        const MenuDashboard()
       ],
     );
   }
 }
 
 class MenuDashboard extends StatelessWidget {
-  MenuDashboard({super.key});
+  const MenuDashboard({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         child: Center(
           child: Wrap(
             spacing: 20.0,
             runSpacing: 20.0,
-            children: const [
-              CardMenu(urlImg: 'assets/mis_cursos.png', title: 'Mis Cursos'),
+            children: [
               CardMenu(
-                  urlImg: 'assets/mis_constancias.png', title: 'Constancias'),
-              CardMenu(urlImg: 'assets/validador.png', title: 'Validador'),
-              CardMenu(urlImg: 'assets/acerca-de.png', title: 'Acerca de'),
-              CardMenu(urlImg: 'assets/contactos.png', title: 'Contacto'),
+                urlImg: 'assets/curso-online.png',
+                title: 'Mis Cursos',
+                onTap: () => Navigator.pushNamed(context, 'cursos'),
+              ),
+              CardMenu(
+                urlImg: 'assets/constancias.png',
+                title: 'Constancias',
+                onTap: () => {print('hola desde constancias')},
+              ),
+              CardMenu(
+                urlImg: 'assets/validador.png',
+                title: 'Validador',
+                onTap: () => {print('hola desde validador')},
+              ),
+              CardMenu(
+                urlImg: 'assets/acerca_de.png',
+                title: 'Acerca de',
+                onTap: () => {print('hola desde acerca de')},
+              ),
+              CardMenu(
+                urlImg: 'assets/contactos.png',
+                title: 'Contacto',
+                onTap: () => {print('hola desde contacto')},
+              ),
             ],
           ),
         ),

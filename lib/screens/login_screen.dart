@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iktan_training/theme/app_theme.dart';
 import 'package:iktan_training/ux/ux.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -16,7 +17,7 @@ class LoginScreen extends StatelessWidget {
               pBottom: 0,
               pLeft: 0),
           const GloboCliper(
-              color: Color(0xFFF8B233),
+              color: AppTheme.primary,
               pTop: 0,
               pRight: 0,
               pBottom: 0,
@@ -158,7 +159,7 @@ Widget campoEmail(TextEditingController email) {
           contentPadding: EdgeInsets.only(top: 14),
           prefixIcon: Icon(
             Icons.email,
-            color: Color(0xFFF8B333),
+            color: AppTheme.primary,
           ),
           hintText: 'Correo electronico',
           hintStyle: TextStyle(color: Colors.black38),
@@ -196,7 +197,7 @@ Widget campoPassword(TextEditingController contrasena) {
           contentPadding: const EdgeInsets.only(top: 14),
           prefixIcon: const Icon(
             Icons.lock,
-            color: Color(0xFFF8B333),
+            color: AppTheme.primary,
           ),
           hintText: 'Contraseña',
           hintStyle: const TextStyle(color: Colors.black38),
@@ -205,7 +206,7 @@ Widget campoPassword(TextEditingController contrasena) {
             child: const Icon(
               Icons.visibility,
               size: 30,
-              color: Color(0xFFF8B333),
+              color: AppTheme.primary,
             ),
           ),
         ),
@@ -232,8 +233,8 @@ Widget botonLogin(BuildContext context, TextEditingController email,
       ),
       child: GestureDetector(
         onTap: () => {
-          print('el valor de usu es: ' + email.text),
-          print('el valor de passw es: ' + contrasena.text),
+          print('el valor de usu es: ${email.text}'),
+          print('el valor de passw es: ${contrasena.text}'),
           Navigator.pushNamed(context, 'user'),
           email.text = '',
           contrasena.text = ''

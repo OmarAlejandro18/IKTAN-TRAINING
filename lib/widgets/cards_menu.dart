@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:iktan_training/theme/app_theme.dart';
 
 class CardMenu extends StatelessWidget {
-  final urlImg;
-  final title;
+  final String urlImg;
+  final String title;
+  final VoidCallback onTap;
 
-  const CardMenu({super.key, required this.urlImg, required this.title});
+  const CardMenu(
+      {super.key,
+      required this.urlImg,
+      required this.title,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => print('Hola mundo'),
+      onTap: onTap,
       child: SizedBox(
         width: 120.0,
         height: 120.0,
         child: Card(
-          color: const Color(0xffeab308),
+          color: AppTheme.primary,
           elevation: 2.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8.0),
@@ -33,7 +39,8 @@ class CardMenu extends StatelessWidget {
                   ),
                   Text(
                     title,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                 ],
               ),

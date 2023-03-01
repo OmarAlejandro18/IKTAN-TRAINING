@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iktan_training/theme/app_theme.dart';
 
 class MainShinyButtons extends StatelessWidget {
   const MainShinyButtons({super.key});
@@ -11,11 +12,11 @@ class MainShinyButtons extends StatelessWidget {
         child: Column(
           children: [
             ShinyButton(
-              color: const Color(0xffeab308),
+              color: AppTheme.primary,
               onTap: () => {Navigator.pushNamed(context, 'login')},
               child: const Padding(
-                padding:  EdgeInsets.all(8.0),
-                child:  Text(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
                   "Empezar",
                   style: TextStyle(color: Colors.black, letterSpacing: 2),
                 ),
