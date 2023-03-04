@@ -31,18 +31,23 @@ class AvatarUser extends StatelessWidget {
       ),
       Center(
         child: Container(
-          decoration: BoxDecoration(
-              border: Border.all(
-                width: 5,
-                color: const Color.fromARGB(255, 255, 255, 255),
+            decoration: BoxDecoration(
+                border: Border.all(
+                  width: 5,
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                ),
+                borderRadius: BorderRadius.circular(150)),
+            width: 140,
+            height: 140,
+            child: const ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(150)),
+              child: FadeInImage(
+                image: NetworkImage(
+                    'https://www.nationalgeographic.com.es/medio/2022/12/02/desert-angel_778d8483_221202112927_800x800.jpg'),
+                placeholder: AssetImage('assets/no-image.jpg'),
+                fit: BoxFit.cover,
               ),
-              borderRadius: BorderRadius.circular(100)),
-          width: 140,
-          height: 120,
-          child:  Image(
-            image: AssetImage('assets/acerca_de.png'),
-          )
-        ),
+            )),
       ),
       const SizedBox(
         height: 10,
@@ -89,7 +94,7 @@ class UserBottonMenu extends StatelessWidget {
                 ),
                 const PopupMenuItem(
                   value: _MenuValues.ncias,
-                  child: Text('datos para ncias'),
+                  child: Text('datos para constancias'),
                 ),
               ],
               elevation: 0,
@@ -102,13 +107,13 @@ class UserBottonMenu extends StatelessWidget {
               onSelected: (value) {
                 switch (value) {
                   case _MenuValues.editPerf:
-                    print('Enviar a editar perfil');
+                    Navigator.pushNamed(context, 'formularioPerfil');
                     break;
                   case _MenuValues.editCont:
-                    print('Enviar a editar aseña');
+                    Navigator.pushNamed(context, 'formularioContrasena');
                     break;
                   case _MenuValues.ncias:
-                    print('Enviar a ncias');
+                    Navigator.pushNamed(context, 'formularioConstancia');
                     break;
                 }
               },

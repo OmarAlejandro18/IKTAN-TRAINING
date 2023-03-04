@@ -19,6 +19,9 @@ class MyApp extends StatelessWidget {
         'user': (_) => const UserScreen(),
         'cursos': (_) => const CursosScreen(),
         'claseCurso': (_) => ClasesScreen(),
+        'formularioPerfil': (_) => const FormularioPerfilScreen(),
+        'formularioContrasena': (_) => const FormularioContrasenaScreen(),
+        'formularioConstancia': (_) => const FormularioContanciaScreen(),
       },
       theme: AppTheme.lightTheme,
     );

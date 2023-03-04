@@ -10,9 +10,9 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          const GloboCliper(
-              color: Color.fromARGB(100, 248, 178, 51),
-              pTop: 60,
+          GloboCliper(
+              color: AppTheme.primary.withOpacity(0.4),
+              pTop: 50,
               pRight: 0,
               pBottom: 0,
               pLeft: 0),
@@ -137,7 +137,7 @@ Widget campoEmail(TextEditingController email) {
     child: Container(
       alignment: Alignment.centerLeft,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppTheme.baseBlanca,
         borderRadius: BorderRadius.circular(10),
         boxShadow: const [
           BoxShadow(
@@ -175,7 +175,7 @@ Widget campoPassword(TextEditingController contrasena) {
     child: Container(
       alignment: Alignment.centerLeft,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppTheme.baseBlanca,
         borderRadius: BorderRadius.circular(10),
         boxShadow: const [
           BoxShadow(
@@ -217,28 +217,28 @@ Widget campoPassword(TextEditingController contrasena) {
 
 Widget botonLogin(BuildContext context, TextEditingController email,
     TextEditingController contrasena) {
-  return Padding(
-    padding: const EdgeInsets.only(left: 220, bottom: 30),
-    child: Container(
-      height: 50,
-      width: 150,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        gradient: const LinearGradient(
-          colors: [
-            Color(0xfff7b858),
-            Color(0xfff7b858),
-          ],
+  return GestureDetector(
+    onTap: () => {
+      print('el valor de usu es: ${email.text}'),
+      print('el valor de passw es: ${contrasena.text}'),
+      email.text = '',
+      contrasena.text = '',
+      Navigator.pushNamed(context, 'user'),
+    },
+    child: Padding(
+      padding: const EdgeInsets.only(left: 220, bottom: 30),
+      child: Container(
+        height: 50,
+        width: 150,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30),
+          gradient: const LinearGradient(
+            colors: [
+              Color(0xfff7b858),
+              Color(0xfff7b858),
+            ],
+          ),
         ),
-      ),
-      child: GestureDetector(
-        onTap: () => {
-          print('el valor de usu es: ${email.text}'),
-          print('el valor de passw es: ${contrasena.text}'),
-          Navigator.pushNamed(context, 'user'),
-          email.text = '',
-          contrasena.text = ''
-        },
         child: Row(
           children: const [
             SizedBox(
@@ -247,17 +247,18 @@ Widget botonLogin(BuildContext context, TextEditingController email,
             Text(
               'Login',
               style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 17,
-                  color: Colors.white),
+                fontWeight: FontWeight.w500,
+                fontSize: 17,
+                color: AppTheme.baseBlanca,
+              ),
             ),
             SizedBox(
               width: 20,
             ),
             Icon(
               Icons.arrow_forward,
-              color: Colors.white,
-            )
+              color: AppTheme.baseBlanca,
+            ),
           ],
         ),
       ),
