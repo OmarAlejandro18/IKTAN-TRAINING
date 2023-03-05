@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:iktan_training/providers/providers.dart';
 import 'package:iktan_training/theme/app_theme.dart';
 import 'package:iktan_training/ux/ux.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -116,7 +118,7 @@ class LoginFormulario extends StatelessWidget {
                           ),
                         ),
                       ),
-                      campoPassword(contrasena),
+                      campoPassword(context, contrasena),
                       const SizedBox(
                         height: 40,
                       ),
@@ -169,7 +171,8 @@ Widget campoEmail(TextEditingController email) {
   );
 }
 
-Widget campoPassword(TextEditingController contrasena) {
+Widget campoPassword(BuildContext context, TextEditingController contrasena) {
+  final esOculto1 = Provider.of<BotonContrasena>(context);
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 25),
     child: Container(
@@ -188,7 +191,7 @@ Widget campoPassword(TextEditingController contrasena) {
       height: 60,
       child: TextFormField(
         controller: contrasena,
-        obscureText: true,
+        obscureText: esOculto1.oculto,
         style: const TextStyle(
           color: Colors.black87,
         ),
@@ -202,12 +205,18 @@ Widget campoPassword(TextEditingController contrasena) {
           hintText: 'Contraseña',
           hintStyle: const TextStyle(color: Colors.black38),
           suffixIcon: GestureDetector(
-            onTap: () => {print("apagar boton")},
-            child: const Icon(
-              Icons.visibility,
-              size: 30,
-              color: AppTheme.primary,
-            ),
+            onTap: () => {esOculto1.esOculto = !esOculto1.oculto},
+            child: esOculto1.oculto
+                ? const Icon(
+                    Icons.visibility_off,
+                    size: 30,
+                    color: AppTheme.primary,
+                  )
+                : const Icon(
+                    Icons.visibility,
+                    size: 30,
+                    color: AppTheme.primary,
+                  ),
           ),
         ),
       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:iktan_training/providers/providers.dart';
 import 'package:iktan_training/theme/app_theme.dart';
 import 'package:iktan_training/ux/ux.dart';
+import 'package:provider/provider.dart';
 
 class FormularioContrasenaScreen extends StatelessWidget {
   const FormularioContrasenaScreen({super.key});
@@ -97,7 +99,7 @@ class FormularioDeContrasena extends StatelessWidget {
                         ),
                       ),
                     ),
-                    campoContrasena(contrasena),
+                    campoContrasena(context, contrasena),
                     const Padding(
                       padding: EdgeInsets.only(
                           left: 25, right: 25, bottom: 15, top: 15),
@@ -109,7 +111,7 @@ class FormularioDeContrasena extends StatelessWidget {
                         ),
                       ),
                     ),
-                    campoNuevaContrasena(nuevaContras),
+                    campoNuevaContrasena(context, nuevaContras),
                     const Padding(
                       padding: EdgeInsets.only(
                           left: 25, right: 25, bottom: 15, top: 15),
@@ -121,7 +123,7 @@ class FormularioDeContrasena extends StatelessWidget {
                         ),
                       ),
                     ),
-                    campoConfirmarContrasena(confirmNuevaContra),
+                    campoConfirmarContrasena(context, confirmNuevaContra),
                     const SizedBox(
                       height: 20,
                     ),
@@ -138,7 +140,9 @@ class FormularioDeContrasena extends StatelessWidget {
   }
 }
 
-Widget campoContrasena(TextEditingController contrasena) {
+Widget campoContrasena(BuildContext context, TextEditingController contrasena) {
+  final ocultar = Provider.of<BotonContrasenaActual>(context);
+
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 25),
     child: Container(
@@ -157,7 +161,7 @@ Widget campoContrasena(TextEditingController contrasena) {
       height: 60,
       child: TextFormField(
         controller: contrasena,
-        obscureText: true,
+        obscureText: ocultar.ocultar,
         keyboardType: TextInputType.name,
         style: const TextStyle(
           color: Colors.black87,
@@ -172,12 +176,18 @@ Widget campoContrasena(TextEditingController contrasena) {
           hintText: 'Contraseña Actual',
           hintStyle: const TextStyle(color: Colors.black38),
           suffixIcon: GestureDetector(
-            onTap: () => {print("apagar boton")},
-            child: const Icon(
-              Icons.visibility,
-              size: 30,
-              color: AppTheme.primary,
-            ),
+            onTap: () => {ocultar.esOcultar = !ocultar.ocultar},
+            child: ocultar.ocultar
+                ? const Icon(
+                    Icons.visibility_off,
+                    size: 30,
+                    color: AppTheme.primary,
+                  )
+                : const Icon(
+                    Icons.visibility,
+                    size: 30,
+                    color: AppTheme.primary,
+                  ),
           ),
         ),
       ),
@@ -185,7 +195,10 @@ Widget campoContrasena(TextEditingController contrasena) {
   );
 }
 
-Widget campoNuevaContrasena(TextEditingController nuevaContras) {
+Widget campoNuevaContrasena(
+    BuildContext context, TextEditingController nuevaContras) {
+  final ocultar = Provider.of<BotonNuevaContrasena>(context);
+
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 25),
     child: Container(
@@ -204,7 +217,7 @@ Widget campoNuevaContrasena(TextEditingController nuevaContras) {
       height: 60,
       child: TextFormField(
         controller: nuevaContras,
-        obscureText: true,
+        obscureText: ocultar.ocultar,
         style: const TextStyle(
           color: Colors.black87,
         ),
@@ -218,12 +231,18 @@ Widget campoNuevaContrasena(TextEditingController nuevaContras) {
           hintText: 'Ingrese la nueva contraseña',
           hintStyle: const TextStyle(color: Colors.black38),
           suffixIcon: GestureDetector(
-            onTap: () => {print("apagar boton")},
-            child: const Icon(
-              Icons.visibility,
-              size: 30,
-              color: AppTheme.primary,
-            ),
+            onTap: () => {ocultar.esOcultar = !ocultar.ocultar},
+            child: ocultar.ocultar
+                ? const Icon(
+                    Icons.visibility_off,
+                    size: 30,
+                    color: AppTheme.primary,
+                  )
+                : const Icon(
+                    Icons.visibility,
+                    size: 30,
+                    color: AppTheme.primary,
+                  ),
           ),
         ),
       ),
@@ -231,7 +250,10 @@ Widget campoNuevaContrasena(TextEditingController nuevaContras) {
   );
 }
 
-Widget campoConfirmarContrasena(TextEditingController confirmNuevaContra) {
+Widget campoConfirmarContrasena(
+    BuildContext context, TextEditingController confirmNuevaContra) {
+  final ocultar = Provider.of<BotonConfirmarContrasena>(context);
+
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 25),
     child: Container(
@@ -250,7 +272,7 @@ Widget campoConfirmarContrasena(TextEditingController confirmNuevaContra) {
       height: 60,
       child: TextFormField(
         controller: confirmNuevaContra,
-        obscureText: true,
+        obscureText: ocultar.ocultar,
         style: const TextStyle(
           color: Colors.black87,
         ),
@@ -264,12 +286,18 @@ Widget campoConfirmarContrasena(TextEditingController confirmNuevaContra) {
           hintText: 'Confirmar contraseña',
           hintStyle: const TextStyle(color: Colors.black38),
           suffixIcon: GestureDetector(
-            onTap: () => {print("apagar boton")},
-            child: const Icon(
-              Icons.visibility,
-              size: 30,
-              color: AppTheme.primary,
-            ),
+            onTap: () => {ocultar.esOcultar = !ocultar.ocultar},
+            child: ocultar.ocultar
+                ? const Icon(
+                    Icons.visibility_off,
+                    size: 30,
+                    color: AppTheme.primary,
+                  )
+                : const Icon(
+                    Icons.visibility,
+                    size: 30,
+                    color: AppTheme.primary,
+                  ),
           ),
         ),
       ),

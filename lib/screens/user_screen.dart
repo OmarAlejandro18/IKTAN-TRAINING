@@ -160,7 +160,7 @@ class MenuDashboard extends StatelessWidget {
               CardMenu(
                 urlImg: 'assets/acerca_de.png',
                 title: 'Acerca de',
-                onTap: () => {print('hola desde acerca de')},
+                onTap: () => {Navigator.pushNamed(context, 'acercaDe')},
               ),
               CardMenu(
                 urlImg: 'assets/contactos.png',
