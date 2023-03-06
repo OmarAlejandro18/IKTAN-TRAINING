@@ -31,7 +31,8 @@ class MyApp extends StatelessWidget {
           'formularioPerfil': (_) => const FormularioPerfilScreen(),
           'formularioContrasena': (_) => const FormularioContrasenaScreen(),
           'formularioConstancia': (_) => const FormularioContanciaScreen(),
-          'acercaDe': (_) => const AcercaDeScreen()
+          'acercaDe': (_) => const AcercaDeScreen(),
+          'detallesCurso' :(context) => const DetallesClase()
         },
         theme: AppTheme.lightTheme,
       ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iktan_training/widgets/widgets.dart';
 import '../widgets/circle_widget.dart';
 
-enum _MenuValues { editPerf, editCont, ncias }
+enum _MenuValues { editPerf, editCont, constancias }
 
 class UserScreen extends StatelessWidget {
   const UserScreen({super.key});
@@ -10,10 +10,18 @@ class UserScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: const [
-          LlamandoCirculo(),
-          AvatarUser(),
-          UserBottonMenu(),
+        children: [
+          const LlamandoCirculo(),
+          const UserBottonMenu(),
+          SingleChildScrollView(
+            child: Column(
+              children: const [
+                  AvatarUser(),
+                 MenuDashboard(),
+              ],
+            ),
+          ),
+          const UserBottonMenu(),
         ],
       ),
     );
@@ -31,6 +39,7 @@ class AvatarUser extends StatelessWidget {
       ),
       Center(
         child: Container(
+          alignment: Alignment.center,
             decoration: BoxDecoration(
                 border: Border.all(
                   width: 5,
@@ -93,7 +102,7 @@ class UserBottonMenu extends StatelessWidget {
                   child: Text('actualizar contraseña'),
                 ),
                 const PopupMenuItem(
-                  value: _MenuValues.ncias,
+                  value: _MenuValues.constancias,
                   child: Text('datos para constancias'),
                 ),
               ],
@@ -112,7 +121,7 @@ class UserBottonMenu extends StatelessWidget {
                   case _MenuValues.editCont:
                     Navigator.pushNamed(context, 'formularioContrasena');
                     break;
-                  case _MenuValues.ncias:
+                  case _MenuValues.constancias:
                     Navigator.pushNamed(context, 'formularioConstancia');
                     break;
                 }
@@ -121,9 +130,8 @@ class UserBottonMenu extends StatelessWidget {
           ],
         ),
         const SizedBox(
-          height: 250,
+          height: 170,
         ),
-        const MenuDashboard()
       ],
     );
   }
@@ -134,41 +142,39 @@ class MenuDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Center(
-          child: Wrap(
-            spacing: 20.0,
-            runSpacing: 20.0,
-            children: [
-              CardMenu(
-                urlImg: 'assets/curso-online.png',
-                title: 'Mis Cursos',
-                onTap: () => Navigator.pushNamed(context, 'cursos'),
-              ),
-              CardMenu(
-                urlImg: 'assets/constancias.png',
-                title: 'Constancias',
-                onTap: () => {print('hola desde constancias')},
-              ),
-              CardMenu(
-                urlImg: 'assets/validador.png',
-                title: 'Validador',
-                onTap: () => {print('hola desde validador')},
-              ),
-              CardMenu(
-                urlImg: 'assets/acerca_de.png',
-                title: 'Acerca de',
-                onTap: () => {Navigator.pushNamed(context, 'acercaDe')},
-              ),
-              CardMenu(
-                urlImg: 'assets/contactos.png',
-                title: 'Contacto',
-                onTap: () => {print('hola desde contacto')},
-              ),
-            ],
-          ),
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: Center(
+        child: Wrap(
+          spacing: 20.0,
+          runSpacing: 20.0,
+          children: [
+            CardMenu(
+              urlImg: 'assets/curso-online.png',
+              title: 'Mis Cursos',
+              onTap: () => Navigator.pushNamed(context, 'cursos'),
+            ),
+            CardMenu(
+              urlImg: 'assets/constancias.png',
+              title: 'Constancias',
+              onTap: () => {print('hola desde constancias')},
+            ),
+            CardMenu(
+              urlImg: 'assets/validador.png',
+              title: 'Validador',
+              onTap: () => {print('hola desde validador')},
+            ),
+            CardMenu(
+              urlImg: 'assets/acerca_de.png',
+              title: 'Acerca de',
+              onTap: () => {Navigator.pushNamed(context, 'acercaDe')},
+            ),
+            CardMenu(
+              urlImg: 'assets/contactos.png',
+              title: 'Contacto',
+              onTap: () => {print('hola desde contacto')},
+            ),
+          ],
         ),
       ),
     );

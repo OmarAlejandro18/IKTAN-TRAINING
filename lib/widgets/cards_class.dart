@@ -8,7 +8,7 @@ class CardClass extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => print('hola mundo desde i: ${i}'),
+      onTap: () => Navigator.pushNamed(context, 'detallesCurso', arguments: i),
       child: Container(
         margin: const EdgeInsets.only(top: 0, right: 16, bottom: 16, left: 16),
         //padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
@@ -19,7 +19,6 @@ class CardClass extends StatelessWidget {
         color: AppTheme.primary,
         width: 5,
       ),
-          
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +64,7 @@ class CardClass extends StatelessWidget {
                 ),
                 Container(
                   width: 180,
-                  height: 90,
+                  height: 50,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                   ),
