@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iktan_training/theme/app_theme.dart';
 
 class DetallesClase extends StatelessWidget {
   const DetallesClase({super.key});
@@ -23,14 +24,74 @@ class SilverAppBar extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            title: Center(child: Text('Sliver AppBar $id')),
-            expandedHeight: 200,
-            flexibleSpace: Image.network('https://img.freepik.com/vector-premium/paisaje-nocturno-luna-llena-grandes-arboles_104785-151.jpg',
-            fit: BoxFit.cover,),
-          ),
+          _CustomAppBar(id: id),
+          // const SliverTabBar()
         ],
       ),
     );
+  }
+}
+
+class _CustomAppBar extends StatelessWidget {
+  const _CustomAppBar({
+    required this.id,
+  });
+
+  final dynamic id;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      backgroundColor: AppTheme.primary,
+      expandedHeight: 200,
+      floating: false,
+      pinned: true,
+      flexibleSpace: FlexibleSpaceBar(
+        centerTitle: true,
+        titlePadding: const EdgeInsets.all(0),
+        title: Container(
+          width: double.infinity,
+          color: Colors.black12,
+          alignment: Alignment.bottomCenter,
+          padding: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
+          child: Text(
+            'Titulo de la Clase $id',
+            style: const TextStyle(fontSize: 16),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        background: const FadeInImage(
+          placeholder: AssetImage('assets/loading.gif'),
+          image: NetworkImage(
+              'http://www.panavision-tours.com/viajes/paisajes-de-islandia/islandia-turismo.jpg'),
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+}
+
+
+class SliverTabBar extends StatelessWidget {
+  const SliverTabBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverAppBar(
+      pinned: true,
+      primary: false,
+      elevation: 8.0,
+      backgroundColor: Colors.deepPurple,
+      title: Align(
+        alignment: AlignmentDirectional.center,
+        child: TabBar(
+          isScrollable: true,
+          tabs: [
+            Tab(text: 'Lobos'),
+            Tab(text: 'Tigres',),
+          ],
+        ),
+      ),
+    ) ;
   }
 }

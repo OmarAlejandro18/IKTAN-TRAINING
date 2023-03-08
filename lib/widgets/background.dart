@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:iktan_training/theme/app_theme.dart';
-import 'package:iktan_training/widgets/widgets.dart';
 
 const List<Color> orangeGradients = [
   Color(0xFFF8B233),

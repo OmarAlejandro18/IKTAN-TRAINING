@@ -6,8 +6,8 @@ class AcercaDeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final alto = size.height * 0.01;
-    final altoCtnr = size.height * 0.03;
+    //final alto = size.height * 0.01;
+    //final altoCtnr = size.height * 0.03;
     return Scaffold(
       body: Column(
         children: [

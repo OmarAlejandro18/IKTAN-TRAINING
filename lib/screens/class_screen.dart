@@ -18,7 +18,7 @@ final _pageController = PageController(
       ),
       body: Stack(
         children: [
-          Text('Aqui ira un texto o widget'),
+      const Text('Aqui ira un texto o widget'),
           Center(
             child: Column(
               children: <Widget>[
