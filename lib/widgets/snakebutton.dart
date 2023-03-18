@@ -17,7 +17,7 @@ class MainShinyButtons extends StatelessWidget {
               child: const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  "Empezar",
+                  "Iniciar",
                   style: TextStyle(color: Colors.black, letterSpacing: 2),
                 ),
               ),

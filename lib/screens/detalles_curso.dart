@@ -21,77 +21,163 @@ class SilverAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          _CustomAppBar(id: id),
-          // const SliverTabBar()
-        ],
-      ),
-    );
+        body: Column(
+      children: [
+        _CustomAppBar(
+          id: id,
+          size: size,
+        ),
+        CursoTabBar(
+          id: id,
+          size: size,
+        ),
+        // const SliverTabBar()
+      ],
+    ));
   }
 }
 
 class _CustomAppBar extends StatelessWidget {
-  const _CustomAppBar({
-    required this.id,
-  });
+  const _CustomAppBar({required this.id, required this.size});
 
   final dynamic id;
+  final Size size;
 
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      backgroundColor: AppTheme.primary,
-      expandedHeight: 200,
-      floating: false,
-      pinned: true,
-      flexibleSpace: FlexibleSpaceBar(
-        centerTitle: true,
-        titlePadding: const EdgeInsets.all(0),
-        title: Container(
+    return Stack(
+      children: [
+        Container(
           width: double.infinity,
-          color: Colors.black12,
-          alignment: Alignment.bottomCenter,
-          padding: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
-          child: Text(
-            'Titulo de la Clase $id',
-            style: const TextStyle(fontSize: 16),
-            textAlign: TextAlign.center,
+          height: size.height * 0.33,
+          decoration: const BoxDecoration(
+            color: AppTheme.primary,
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30)),
+          ),
+          child: const ClipRRect(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30)),
+            child: FadeInImage(
+              image: NetworkImage(
+                  'https://www.nationalgeographic.com.es/medio/2022/12/02/desert-angel_778d8483_221202112927_800x800.jpg'),
+              placeholder: AssetImage('assets/loading.gif'),
+              fit: BoxFit.cover,
+            ),
           ),
         ),
-        background: const FadeInImage(
-          placeholder: AssetImage('assets/loading.gif'),
-          image: NetworkImage(
-              'http://www.panavision-tours.com/viajes/paisajes-de-islandia/islandia-turismo.jpg'),
-          fit: BoxFit.cover,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 50,
+            ),
+            IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(
+                Icons.arrow_back,
+                size: 40,
+                color: AppTheme.baseBlanca,
+              ),
+            ),
+            SizedBox(
+              height: size.height * 0.14,
+            ),
+            Container(
+              width: double.infinity,
+              height: size.height * 0.07,
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.6),
+                borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30)),
+              ),
+              child: Center(
+                child: Text(
+                  'Detalles de la clase $id',
+                  maxLines: 3,
+                  style: const TextStyle(
+                      color: AppTheme.baseBlanca,
+                      fontSize: 15,
+                      overflow: TextOverflow.ellipsis),
+                ),
+              ),
+            )
+          ],
         ),
-      ),
+      ],
     );
   }
 }
 
-
-class SliverTabBar extends StatelessWidget {
-  const SliverTabBar({super.key});
-
+class CursoTabBar extends StatelessWidget {
+  const CursoTabBar({super.key, required this.size, required this.id});
+  final Size size;
+  final int id;
   @override
   Widget build(BuildContext context) {
-    return SliverAppBar(
-      pinned: true,
-      primary: false,
-      elevation: 8.0,
-      backgroundColor: Colors.deepPurple,
-      title: Align(
-        alignment: AlignmentDirectional.center,
-        child: TabBar(
-          isScrollable: true,
-          tabs: [
-            Tab(text: 'Lobos'),
-            Tab(text: 'Tigres',),
-          ],
-        ),
+    return DefaultTabController(
+      length: 5,
+      child: Column(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              color: AppTheme.primary,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+            ),
+            height: size.height * 0.07,
+            child: TabBar(
+              isScrollable: true,
+              labelColor: AppTheme.baseBlanca,
+              unselectedLabelColor: AppTheme.baseBlanca.withOpacity(0.4),
+              indicatorColor: Colors.white,
+              tabs: const [
+                Tab(
+                  text: 'Info.',
+                ),
+                Tab(
+                  text: 'Tareas',
+                ),
+                Tab(
+                  text: 'Materiales',
+                ),
+                Tab(
+                  text: 'Temario',
+                ),
+                Tab(
+                  text: 'Liga de Acceso',
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+              height: size.height * 0.6,
+              child: TabBarView(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      Text('La clase $id consiste en aprender sobre...')
+                    ],
+                  ),
+                  const Icon(Icons.abc),
+                  const Icon(Icons.abc),
+                  const Icon(Icons.abc),
+                  const Icon(Icons.abc),
+                ],
+              ))
+        ],
       ),
-    ) ;
+    );
   }
 }

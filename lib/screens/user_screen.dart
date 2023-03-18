@@ -16,8 +16,8 @@ class UserScreen extends StatelessWidget {
           SingleChildScrollView(
             child: Column(
               children: const [
-                  AvatarUser(),
-                 MenuDashboard(),
+                AvatarUser(),
+                MenuDashboard(),
               ],
             ),
           ),
@@ -39,7 +39,7 @@ class AvatarUser extends StatelessWidget {
       ),
       Center(
         child: Container(
-          alignment: Alignment.center,
+            alignment: Alignment.center,
             decoration: BoxDecoration(
                 border: Border.all(
                   width: 5,
@@ -53,7 +53,7 @@ class AvatarUser extends StatelessWidget {
               child: FadeInImage(
                 image: NetworkImage(
                     'https://www.nationalgeographic.com.es/medio/2022/12/02/desert-angel_778d8483_221202112927_800x800.jpg'),
-                placeholder: AssetImage('assets/no-image.jpg'),
+                placeholder: AssetImage('assets/no-Imagen.jpg'),
                 fit: BoxFit.cover,
               ),
             )),

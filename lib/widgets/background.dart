@@ -20,7 +20,7 @@ class Background extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          const WavyHeader(),
+          //const WavyHeader(),
           Expanded(child: Container()),
           Stack(
             alignment: Alignment.bottomCenter,
