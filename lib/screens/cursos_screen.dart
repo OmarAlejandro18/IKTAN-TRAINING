@@ -17,9 +17,8 @@ class CursosScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: const [
-            CardSwipper(),
-          ],
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [CardSwipper()],
         ),
       ),
     );

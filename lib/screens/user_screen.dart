@@ -39,24 +39,25 @@ class AvatarUser extends StatelessWidget {
       ),
       Center(
         child: Container(
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                border: Border.all(
-                  width: 5,
-                  color: const Color.fromARGB(255, 255, 255, 255),
-                ),
-                borderRadius: BorderRadius.circular(150)),
-            width: 140,
-            height: 140,
-            child: const ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(150)),
-              child: FadeInImage(
-                image: NetworkImage(
-                    'https://www.nationalgeographic.com.es/medio/2022/12/02/desert-angel_778d8483_221202112927_800x800.jpg'),
-                placeholder: AssetImage('assets/no-Imagen.jpg'),
-                fit: BoxFit.cover,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+              border: Border.all(
+                width: 5,
+                color: const Color.fromARGB(255, 255, 255, 255),
               ),
-            )),
+              borderRadius: BorderRadius.circular(150)),
+          width: 140,
+          height: 140,
+          child: const ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(150)),
+            child: FadeInImage(
+              image: NetworkImage(
+                  'https://www.nationalgeographic.com.es/medio/2022/12/02/desert-angel_778d8483_221202112927_800x800.jpg'),
+              placeholder: AssetImage('assets/no-Imagen.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
       ),
       const SizedBox(
         height: 10,
@@ -157,7 +158,7 @@ class MenuDashboard extends StatelessWidget {
             CardMenu(
               urlImg: 'assets/constancias.png',
               title: 'Constancias',
-              onTap: () => {print('hola desde constancias')},
+              onTap: () => Navigator.pushNamed(context, 'constancias'),
             ),
             CardMenu(
               urlImg: 'assets/validador.png',
@@ -167,12 +168,12 @@ class MenuDashboard extends StatelessWidget {
             CardMenu(
               urlImg: 'assets/acerca_de.png',
               title: 'Acerca de',
-              onTap: () => {Navigator.pushNamed(context, 'acercaDe')},
+              onTap: () => Navigator.pushNamed(context, 'acercaDe'),
             ),
             CardMenu(
               urlImg: 'assets/contactos.png',
-              title: 'Contacto',
-              onTap: () => {print('hola desde contacto')},
+              title: 'Contactanos',
+              onTap: () => Navigator.pushNamed(context, 'contactanos'),
             ),
           ],
         ),

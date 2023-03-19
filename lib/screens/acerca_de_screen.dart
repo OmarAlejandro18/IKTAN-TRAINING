@@ -53,21 +53,53 @@ class AcercaDeScreen extends StatelessWidget {
           SizedBox(
             height: size.height * 0.02,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: SizedBox(
-              height: size.height * 0.06,
-              width: double.infinity,
-              child: const Padding(
-                padding: EdgeInsets.only(left: 15, right: 15),
-                child: Text(
-                  'Somos una empresa comprometida con tu conocimiento y crecimiento en la areas petroleras',
-                  textAlign: TextAlign.justify,
-                ),
-              ),
+          TextAboutSection(
+            texto:
+                'Somos una empresa comprometida con tu conocimiento y crecimiento en la areas petroleras',
+            size: size,
+          ),
+          SizedBox(
+            height: size.height * 0.02,
+          ),
+          const Center(
+            child: Text(
+              'Visión',
+              style: TextStyle(fontSize: 20),
             ),
           ),
+          SizedBox(
+            height: size.height * 0.02,
+          ),
+          TextAboutSection(
+              texto:
+                  'Nuestro objetivo es ofrecer a nuestros clientes soluciones de software de alta calidad, con un enfoque en la usabilidad y la experiencia del usuario.',
+              size: size)
         ],
+      ),
+    );
+  }
+}
+
+class TextAboutSection extends StatelessWidget {
+  const TextAboutSection({super.key, required this.texto, required this.size});
+
+  final String texto;
+  final Size size;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, right: 20),
+      child: SizedBox(
+        height: size.height * 0.08,
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 15, right: 15),
+          child: Text(
+            texto,
+            textAlign: TextAlign.justify,
+          ),
+        ),
       ),
     );
   }

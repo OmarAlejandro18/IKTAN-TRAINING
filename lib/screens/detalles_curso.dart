@@ -54,14 +54,14 @@ class _CustomAppBar extends StatelessWidget {
           height: size.height * 0.33,
           decoration: const BoxDecoration(
             color: AppTheme.primary,
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(30),
-                bottomRight: Radius.circular(30)),
+            // borderRadius: BorderRadius.only(
+            //     bottomLeft: Radius.circular(5),
+            //     bottomRight: Radius.circular(5)),
           ),
           child: const ClipRRect(
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(30),
-                bottomRight: Radius.circular(30)),
+            // borderRadius: BorderRadius.only(
+            //     bottomLeft: Radius.circular(5),
+            //     bottomRight: Radius.circular(5)),
             child: FadeInImage(
               image: NetworkImage(
                   'https://www.nationalgeographic.com.es/medio/2022/12/02/desert-angel_778d8483_221202112927_800x800.jpg'),
@@ -93,8 +93,8 @@ class _CustomAppBar extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.black.withOpacity(0.6),
                 borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    bottomRight: Radius.circular(30)),
+                    bottomLeft: Radius.circular(5),
+                    bottomRight: Radius.circular(5)),
               ),
               child: Center(
                 child: Text(
@@ -127,10 +127,6 @@ class CursoTabBar extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               color: AppTheme.primary,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
             ),
             height: size.height * 0.07,
             child: TabBar(

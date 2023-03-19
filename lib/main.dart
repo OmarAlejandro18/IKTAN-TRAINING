@@ -32,7 +32,9 @@ class MyApp extends StatelessWidget {
           'formularioContrasena': (_) => const FormularioContrasenaScreen(),
           'formularioConstancia': (_) => const FormularioContanciaScreen(),
           'acercaDe': (_) => const AcercaDeScreen(),
-          'detallesCurso' :(context) => const DetallesClase()
+          'detallesCurso': (_) => const DetallesClase(),
+          'constancias': (_) => const ConstanciasScreen(),
+          'contactanos': (_) => const ContactanosScreen()
         },
         theme: AppTheme.lightTheme,
       ),

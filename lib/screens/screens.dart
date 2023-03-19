@@ -1,5 +1,7 @@
+export 'package:iktan_training/screens/contactanos_screen.dart';
 export 'package:iktan_training/screens/acerca_de_screen.dart';
 export 'package:iktan_training/screens/class_screen.dart';
+export 'package:iktan_training/screens/constancias_screen.dart';
 export 'package:iktan_training/screens/cursos_screen.dart';
 export 'package:iktan_training/screens/detalles_curso.dart';
 export 'package:iktan_training/screens/formulario_constancias_screen.dart';
